@@ -35,17 +35,21 @@ try:
 except URLError:
   streamlit.error()
 
+def get_fruitload_list():
+  my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+  my_cur = my_cnx.cursor()
+  my_cur.execute("SELECT * from pc_rivery_db.public.fruit_load_list")
+  my_data_row = my_cur.fetchall()
+  return my_data_row
 
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("SELECT * from pc_rivery_db.public.fruit_load_list")
-my_data_row = my_cur.fetchall()
-streamlit.header("My fruit load list contains: ")
-streamlit.dataframe(my_data_row)
+if streamlit.button("Get Fruit load list"):
+  streamlit.header("My fruit load list contains: ")
+  fruit_list = get_fruitload_list()
+  streamlit.dataframe(fruit_list)
 
-fruits_to_list = [fruit[0] for fruit in list(my_data_row)]
+# fruits_to_list = [fruit[0] for fruit in list(my_data_row)]
 
 fruit_choice = streamlit.text_input('What fruit would you like to add ?','banana')
 streamlit.write('Thanks for adding ', fruit_choice)
 
-select_fruit = streamlit.multiselect("What fruit would you like to select ?", fruits_to_list, ["banana"])
+# select_fruit = streamlit.multiselect("What fruit would you like to select ?", fruits_to_list, ["banana"])
