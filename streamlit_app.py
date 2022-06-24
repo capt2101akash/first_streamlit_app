@@ -31,6 +31,6 @@ my_cur.execute("SELECT * from pc_rivery_db.public.fruit_load_list")
 my_data_row = my_cur.fetchall()
 streamlit.header("My fruit load list contains: ")
 streamlit.dataframe(my_data_row)
-streamlit.text(pd.DataFrame(my_data_row))
+streamlit.text(list(my_data_row))
 
 select_fruit = streamlit.multiselect("What fruit would you like to add ?", list(my_data_row), ["Banana"])
