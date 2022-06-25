@@ -51,12 +51,13 @@ if streamlit.button("Get Fruit load list"):
   streamlit.header("My fruit load list contains: ")
   fruit_list = get_fruitload_list()
   streamlit.dataframe(fruit_list)
-  my_cnx.close()
 
 # fruits_to_list = [fruit[0] for fruit in list(my_data_row)]
 
   fruit_choice = streamlit.text_input('What fruit would you like to add ?')
   insert_fruit_to_list(fruit_choice)
   streamlit.write('Thanks for adding ', fruit_choice)
+  
+  my_cnx.close()
 
 # select_fruit = streamlit.multiselect("What fruit would you like to select ?", fruits_to_list, ["banana"])
