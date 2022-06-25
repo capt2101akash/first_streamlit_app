@@ -43,7 +43,7 @@ def get_fruitload_list():
 
 def insert_fruit_to_list(fruit):
   my_cur = my_cnx.cursor()
-  my_cur.execute(f"insert into pc_rivery_db.public.fruit_load_list values {fruit}")
+  my_cur.execute(f"insert into pc_rivery_db.public.fruit_load_list values ('{fruit}')")
   return 'Thanks for adding ' + fruit
 #   my_data_row = my_cur.fetchall()
   
