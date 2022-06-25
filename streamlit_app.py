@@ -44,6 +44,7 @@ def get_fruitload_list():
 def insert_fruit_to_list(fruit):
   my_cur = my_cnx.cursor()
   my_cur.execute(f"insert into pc_rivery_db.public.fruit_load_list values {fruit}")
+  return 'Thanks for adding ' + fruit
 #   my_data_row = my_cur.fetchall()
   
 if streamlit.button("Get Fruit load list"):
@@ -56,8 +57,8 @@ if streamlit.button("Get Fruit load list"):
 
   fruit_choice = streamlit.text_input('What fruit would you like to add ?')
   if fruit_choice != '':
-    insert_fruit_to_list(fruit_choice)
-    streamlit.write('Thanks for adding ', fruit_choice)
+    text = insert_fruit_to_list(fruit_choice)
+    streamlit.write(text)
   
   my_cnx.close()
 
