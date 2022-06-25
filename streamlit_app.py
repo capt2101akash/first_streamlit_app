@@ -55,7 +55,7 @@ if streamlit.button("Get Fruit load list"):
 # fruits_to_list = [fruit[0] for fruit in list(my_data_row)]
 
   fruit_choice = streamlit.text_input('What fruit would you like to add ?')
-  if fruit_choice:
+  if fruit_choice is != '':
     insert_fruit_to_list(fruit_choice)
     streamlit.write('Thanks for adding ', fruit_choice)
   
