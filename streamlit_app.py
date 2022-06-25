@@ -57,12 +57,12 @@ if fruit_load_btn:
   streamlit.dataframe(fruit_list)
 
 # fruits_to_list = [fruit[0] for fruit in list(my_data_row)]
-
-  fruit_choice = streamlit.text_input('What fruit would you like to add ?')
-  if fruit_choice != '':
-    text = insert_fruit_to_list(fruit_choice)
-    streamlit.write(text)
   
   my_cnx.close()
+  
+fruit_choice = streamlit.text_input('What fruit would you like to add ?')
+if fruit_choice != '':
+  text = insert_fruit_to_list(fruit_choice)
+  streamlit.write(text)
 
 # select_fruit = streamlit.multiselect("What fruit would you like to select ?", fruits_to_list, ["banana"])
